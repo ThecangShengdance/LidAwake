@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: xcodebuild -version
+
+      - name: Build (Release)
+        run: |
+          set -o pipefail
+          xcodebuild -project LidAwake.xcodeproj -scheme LidAwake \
+            -configuration Release -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO build
+
+      - name: Smoke test
+        run: |
+          APP=build/Build/Products/Release/LidAwake.app
+          "$APP/Contents/MacOS/LidAwake" --probe
+          "$APP/Contents/MacOS/LidAwake" --print-script
