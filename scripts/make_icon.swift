@@ -80,7 +80,11 @@ let assets = root.appendingPathComponent("Sources/Resources/Assets.xcassets")
 let iconSet = assets.appendingPathComponent("AppIcon.appiconset")
 try? FileManager.default.createDirectory(at: iconSet, withIntermediateDirectories: true)
 
-let master = iconSet.appendingPathComponent("icon_1024.png")
+// 1024 主图放在 .build 下，不进资源目录（否则 xcodebuild 会警告 "unassigned child"）
+let stage = root.appendingPathComponent(".build/icon")
+try? FileManager.default.createDirectory(at: stage, withIntermediateDirectories: true)
+
+let master = stage.appendingPathComponent("icon_1024.png")
 try png.write(to: master)
 
 struct Entry { let size: Int; let scale: Int; var pixels: Int { size * scale }

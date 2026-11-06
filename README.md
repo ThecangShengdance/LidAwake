@@ -2,6 +2,8 @@
 
 [![macOS](https://img.shields.io/badge/macOS-14.0%2B-black?logo=apple)](https://www.apple.com/macos/)
 [![Swift](https://img.shields.io/badge/Swift-5-orange?logo=swift)](https://swift.org)
+[![Build](https://github.com/ThecangShengdance/LidAwake/actions/workflows/build.yml/badge.svg)](https://github.com/ThecangShengdance/LidAwake/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/ThecangShengdance/LidAwake)](../../releases/latest)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 一个常驻菜单栏的小工具：**不外接显示器，合上盖子也让 Mac 继续跑任务**。
@@ -118,6 +120,10 @@ Dist/LidAwake.app/Contents/MacOS/LidAwake --snapshot out.png --state on --batter
 - `disablesleep=1` 期间机器不会自动休眠，**请接电源**；忘记关会持续耗电、机身发热。
 - 系统大版本升级后若 `pmset` 行为变化，面板会提示「无法读取系统休眠设置」。
 - 暂不支持「按计划自动关闭」「接电源时自动开启」等更复杂的策略。
+
+## 更新日志
+
+见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## License
 

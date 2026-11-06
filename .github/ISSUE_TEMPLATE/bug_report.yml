@@ -1,0 +1,53 @@
+name: 问题反馈
+description: 报告 LidAwake 不工作、闪退或界面异常
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请先确认：面板顶部开关能拨动、`--probe` 有正常输出（见下方命令）。
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 期望的结果 vs 实际的结果
+      placeholder: 拨动开关后合盖仍然睡眠……
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开 LidAwake
+        2. 拨动开关
+        3. 合盖
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS 版本
+      description: 输出 `sw_vers -productVersion` 或「关于本机」
+      placeholder: "26.1 (25B78)"
+    validations:
+      required: true
+  - type: input
+    id: hardware
+    attributes:
+      label: 机型
+      placeholder: MacBook Pro 14 英寸 (M3 Pro)
+  - type: textarea
+    id: probe
+    attributes:
+      label: 自检输出
+      description: 在终端执行下面的命令，把输出粘贴进来
+      value: |
+        ```
+        /Applications/LidAwake.app/Contents/MacOS/LidAwake --probe
+        pmset -g | grep -i sleep
+        ```
+      render: shell
+    validations:
+      required: false
